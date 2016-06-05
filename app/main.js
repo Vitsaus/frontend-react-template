@@ -1,4 +1,6 @@
-import './main.css';
+import './css/vendor/bootstrap.css';
+import './css/vendor/bootstrap-theme.css';
+import './css/main.css';
 
 import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';

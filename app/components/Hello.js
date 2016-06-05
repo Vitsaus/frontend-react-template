@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setMessage } from '../actions';
 
-
 export default class HelloComponent extends React.Component {
     render() {
         return (

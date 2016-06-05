@@ -42,6 +42,7 @@ var common = {
     ],
     postcss: function () {
         return [stylelint({
+            ignoreFiles: './app/css/vendor/*.css',
             rules: {
                 'block-no-empty': true,
                 'color-no-invalid-hex': true,
