@@ -32,6 +32,7 @@ var common = {
         ]
     },
     plugins: [
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new ExtractTextPlugin('main.css', {
             allChunks: false
         }),
