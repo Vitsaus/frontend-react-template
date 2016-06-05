@@ -17,9 +17,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import Layout from './components/Layout.js';
-import HelloA from './components/HelloA.js';
-import HelloB from './components/HelloB.js';
-import HelloC from './components/HelloC.js';
+import Hello from './containers/Hello.js';
 
 import app from './reducers.js';
 
@@ -54,9 +52,7 @@ ReactDom.render(
         <div>
             <Router history={history}>
                 <Route path="/" component={Layout}>
-                    <IndexRoute component={HelloA}/>
-                    <Route path="foo" component={HelloB}/>
-                    <Route path="bar" component={HelloC}/>
+                    <IndexRoute component={Hello} />
                 </Route>
             </Router>
             <DevTools />
