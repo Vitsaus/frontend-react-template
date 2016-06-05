@@ -49,16 +49,16 @@ history.listen((location) => {
 
 ReactDom.render(
     <Provider store={store}>
-      <div>
-        <Router history={history}>
-          <Route path="/" component={Layout}>
-            <IndexRoute component={HelloA}/>
-            <Route path="foo" component={HelloB}/>
-            <Route path="bar" component={HelloC}/>
-          </Route>
-        </Router>
-        <DevTools />
-      </div>
+        <div>
+            <Router history={history}>
+                <Route path="/" component={Layout}>
+                    <IndexRoute component={HelloA}/>
+                    <Route path="foo" component={HelloB}/>
+                    <Route path="bar" component={HelloC}/>
+                </Route>
+            </Router>
+            <DevTools />
+        </div>
     </Provider>,
     document.getElementById('app')
 );
