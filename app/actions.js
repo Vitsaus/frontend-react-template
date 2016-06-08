@@ -13,10 +13,12 @@ export function setMessage(message) {
 
 export function thunkMessage(message) {
 
-    console.log('thunked message!', message);
+    return function(dispatch, getStore) {
 
-    return function(dispatch) {
+        console.log('thunked message!', message, getStore().message);
+
         return dispatch(setMessage(message));
+
     };
 
 }
