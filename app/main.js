@@ -2,7 +2,7 @@ import './css/vendor/bootstrap.css';
 import './css/vendor/bootstrap-theme.css';
 import './css/main.css';
 
-import { createDevTools }from 'redux-devtools';
+import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
 import Dispatcher from 'redux-devtools-dispatch';
@@ -10,12 +10,12 @@ import MultipleMonitors from 'redux-devtools-multiple-monitors';
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Provider }from 'react-redux';
-import { createStore, applyMiddleware }from 'redux';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import { Router, Route, browserHistory, IndexRoute }from 'react-router';
-import { syncHistoryWithStore }from 'react-router-redux';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 import Layout from './components/Layout.js';
 import Hello from './containers/Hello.js';

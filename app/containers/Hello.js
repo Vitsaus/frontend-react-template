@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect }from 'react-redux';
-import { setMessage, thunkMessage }from '../actions';
+import { connect } from 'react-redux';
+import { setMessage, thunkMessage } from '../actions';
 import Hello from '../components/Hello';
 
 class HelloContainer extends React.Component {

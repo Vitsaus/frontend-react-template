@@ -477,7 +477,7 @@ module.exports = {
         'keyword-spacing': [
           2,
           {
-            before: false,
+            before: true,
             after: true,
           },
         ],
