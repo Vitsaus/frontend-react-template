@@ -23,7 +23,7 @@ var common = {
         ],
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'], },
-            { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'autoprefixer-loader') },
+            { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader') },
             { test: /\.json$/, loader: 'json'},
             { test: /\.mp4/, loader: 'url?limit=1000&mimetype=video/mp4&name=./videos/[name].[ext]' },
             { test: /\.svg/, loader: 'url?limit=1000&mimetype=image/svg+xml&name=./images/[name].[ext]' },
