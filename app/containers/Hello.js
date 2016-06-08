@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { setMessage } from '../actions';
+import { connect }from 'react-redux';
+import { setMessage, thunkMessage }from '../actions';
 import Hello from '../components/Hello';
 
 class HelloContainer extends React.Component {
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onClick: () => {
             console.log('click div!');
-            dispatch(setMessage('Hello world from redux!'));
+            dispatch(thunkMessage('Hello world from redux!'));
         }
     };
 };

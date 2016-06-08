@@ -4,6 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require('webpack');
 var merge = require('webpack-merge');
+var stylerules = require('./stylelint.config.js');
 var config;
 
 var common = {
@@ -23,7 +24,13 @@ var common = {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'], },
             { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'autoprefixer-loader') },
-            { test: /\.(png|jpg|gif)$/, loader: "url-loader?limit=5000&name=[name].[ext]" }
+            { test: /\.json$/, loader: 'json'},
+            { test: /\.mp4/, loader: 'url?limit=1000&mimetype=video/mp4&name=./videos/[name].[ext]' },
+            { test: /\.svg/, loader: 'url?limit=1000&mimetype=image/svg+xml&name=./images/[name].[ext]' },
+            { test: /\.png$/, loader: 'url?limit=1000&mimetype=image/png&name=./images/[name].[ext]' },
+            { test: /\.jpg/, loader: 'url?limit=1000&mimetype=image/jpeg&name=./images/[name].[ext]' },
+            { test: /\.gif/, loader: 'url?limit=1000&mimetype=image/gif&name=./images/[name].[ext]' },
+            { test: /\.(otf|eot|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=1000&name=./fonts/[name].[ext]' }
         ],
     },
     resolve: {
@@ -32,8 +39,7 @@ var common = {
         ]
     },
     plugins: [
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new ExtractTextPlugin('main.css', {
+        new ExtractTextPlugin('css/main.css', {
             allChunks: false
         }),
         new HtmlWebpackPlugin({
@@ -42,28 +48,10 @@ var common = {
         })
     ],
     postcss: function () {
-        return [stylelint({
-            ignoreFiles: './app/css/vendor/*.css',
-            rules: {
-                'block-no-empty': true,
-                'color-no-invalid-hex': true,
-                'declaration-colon-space-after': 'always',
-                'declaration-colon-space-before': 'never',
-                'function-comma-space-after': 'always',
-                'function-url-quotes': ['always', 'single'],
-                'media-feature-colon-space-after': 'always',
-                'media-feature-colon-space-before': 'never',
-                'max-empty-lines': 2,
-                'number-leading-zero': 'never',
-                'number-no-trailing-zeros': true,
-                'property-no-vendor-prefix': true,
-                'selector-list-comma-newline-after': 'always-multi-line',
-                'string-quotes': ['single'],
-                'function-linear-gradient-no-nonstandard-direction': true,
-                'indentation': 4,
-                'color-hex-case': 'lower'
-            }
-        })];
+        return [stylelint(stylerules)];
+    },
+    eslint: {
+        fix: true
     }
 };
 
@@ -91,11 +79,25 @@ switch(process.env.npm_lifecycle_event) {
                 multiStep: true
             })
         );
+        config.plugins.push(
+            new webpack.DefinePlugin({
+                'process.env': {
+                    NODE_ENV: '"development"'
+                }
+            })
+        );
         break;
     case 'build':
         config = merge(common, {
             devtool: 'eval-source-map'
         });
+        config.plugins.push(
+            new webpack.DefinePlugin({
+                'process.env': {
+                    NODE_ENV: '"development"'
+                }
+            })
+        );
         break;
     case 'build-min':
         config = merge(common, {
