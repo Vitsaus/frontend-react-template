@@ -4,11 +4,15 @@ import { setMessage, thunkMessage }from '../actions';
 import Hello from '../components/Hello';
 
 class HelloContainer extends React.Component {
+
     render() {
+
         return (
             <Hello onClick={this.props.onClick} msg={this.props.msg} />
         );
+
     }
+
 }
 
 HelloContainer.propTypes = {
