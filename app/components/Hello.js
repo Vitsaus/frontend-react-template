@@ -18,5 +18,3 @@ Hello.propTypes = {
     msg: React.PropTypes.string.isRequired,
     onClick: React.PropTypes.func.isRequired
 };
-
-export default Hello;
