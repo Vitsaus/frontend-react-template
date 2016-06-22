@@ -57,7 +57,9 @@ var common = {
         return [stylelint(stylerules)];
     },
     eslint: {
-        fix: true
+        fix: true,
+        failOnWarning: false,
+        failOnError: true
     }
 };
 
