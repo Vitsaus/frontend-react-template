@@ -10,7 +10,10 @@ var config;
 
 var common = {
     entry: {
-        app: ['./app/main.js']
+        app: [
+            'webpack-hot-middleware/client',
+            './app/main.js'
+        ]
     },
     output: {
         path: path.resolve(__dirname, 'build'),
@@ -23,7 +26,11 @@ var common = {
             { test: /\.css$/, loaders: ['postcss'], exclude: /node_modules/ }
         ],
         loaders: [
-            { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'], },
+            {
+                loaders: ['react-hot', 'babel'],
+                exclude: /node_modules/,
+                test: /\.jsx?$/
+            },
             { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader') },
             { test: /\.json$/, loader: 'json'},
             { test: /\.mp4/, loader: 'url?limit=500&mimetype=video/mp4&name=./videos/[name].[ext]' },
@@ -109,7 +116,7 @@ switch(process.env.npm_lifecycle_event) {
         break;
     case 'build-min':
         config = merge(common, {
-            devtool: 'source-map'
+            devtool: 'eval-source-map'
         });
         config.plugins.push(
             new webpack.optimize.UglifyJsPlugin({
