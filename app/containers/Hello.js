@@ -21,18 +21,24 @@ HelloContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+
     return {
         msg: state.message.message
     };
+
 };
 
 const mapDispatchToProps = (dispatch) => {
+
     return {
         onClick: () => {
+
             console.log('click div!');
             dispatch(thunkMessage('Hello world from redux!'));
+
         }
     };
+
 };
 
 export default connect(

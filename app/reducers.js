@@ -8,10 +8,12 @@ const initialState = {
 function message(state = initialState, action) {
 
     switch (action.type) {
+
     case 'SET_MESSAGE':
         return Object.assign({}, state, { message: action.message });
     default:
         return state;
+
     }
 
 }

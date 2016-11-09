@@ -23,10 +23,10 @@ import Hello from './containers/Hello.js';
 import app from './reducers.js';
 
 const DevTools = createDevTools(
-    <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q">
+    <DockMonitor toggleVisibilityKey='ctrl-h' changePositionKey='ctrl-q'>
         <MultipleMonitors>
-            <LogMonitor theme="tomorrow" preserveScrollTop={false} />
-            <Dispatcher theme="tomorrow" />
+            <LogMonitor theme='tomorrow' preserveScrollTop={false} />
+            <Dispatcher theme='tomorrow' />
         </MultipleMonitors>
     </DockMonitor>
 );
@@ -57,7 +57,7 @@ ReactDom.render(
     <Provider store={store}>
         <div>
             <Router history={history}>
-                <Route path="/" component={Layout}>
+                <Route path='/' component={Layout}>
                     <IndexRoute component={Hello} />
                 </Route>
             </Router>
